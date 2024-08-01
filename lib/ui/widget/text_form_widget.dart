@@ -35,7 +35,7 @@ class TextFormWidget extends StatelessWidget {
   final TextInputType? keyboardType;
   final Color? suffixIconColor;
   final Color? borderColor;
-  final Color labelColor;
+  // final Color labelColor;
   final Color hintColor;
   final Color? fillColor;
   final Color? prefixIconColor;
@@ -78,7 +78,6 @@ class TextFormWidget extends StatelessWidget {
     this.size,
     this.text,
     this.borderColor = AppColor.white,
-    this.labelColor = AppColor.black,
     this.maxline = 1,
     this.border = 4,
     this.minline,
@@ -104,72 +103,73 @@ class TextFormWidget extends StatelessWidget {
           height: 12.2.h,
         ),
         TextFormField(
-          textCapitalization: TextCapitalization.words,
-          keyboardType: keyboardType,
-          focusNode: focusNode,
-          decoration: InputDecoration(
-              labelText: label ?? '',
-              labelStyle: labelStyle,
-              filled: isFilled,
-              fillColor: fillColor,
-              focusColor: AppColor.black,
-              contentPadding: EdgeInsets.fromLTRB(20.w, 10.w, 20.w, 19.w),
-              border: OutlineInputBorder(
-                // borderRadius: BorderRadius.circular(.r),
-                borderSide: BorderSide(width: 1.w, color: AppColor.white),
-              ),
-              focusedBorder: OutlineInputBorder(
-                // borderRadius: BorderRadius.all(Radius.circular(border!.r)),
-                borderSide: BorderSide(width: 1.w, color: borderColor!),
-              ),
-              disabledBorder: OutlineInputBorder(
-                // borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                borderSide: BorderSide(width: 1.w, color: Colors.grey),
-              ),
-              enabledBorder: OutlineInputBorder(
-                // borderRadius: BorderRadius.all(Radius.circular(border!.r)),
-                borderSide: BorderSide(width: 1.w, color: borderColor!),
-              ),
-              errorBorder: OutlineInputBorder(
-                  // borderRadius: BorderRadius.all(Radius.circular(10.r)),
-                  borderSide: BorderSide(width: 1.w, color: Colors.red)),
-              focusedErrorBorder: OutlineInputBorder(
-                  // borderRadius: BorderRadius.all(Radius.circular(10.r)),
-                  borderSide: BorderSide(width: 1.w, color: Colors.redAccent)),
-              prefixIcon: prefixWidget ??
-                  (prefixIcon != null
-                      ? IconButton(
-                          onPressed: onPasswordToggle,
-                          icon: Icon(
-                            prefixIcon,
-                            color: prefixIconColor,
-                          ))
-                      : null),
-              suffixIcon: Padding(
-                padding: EdgeInsets.all(1.5.w),
-                child: suffixWidget ??
-                    (suffixIcon != null
+            textCapitalization: TextCapitalization.words,
+            keyboardType: keyboardType,
+            focusNode: focusNode,
+            decoration: InputDecoration(
+                labelText: label ?? '',
+                labelStyle: const TextStyle(color: AppColor.white),
+                filled: isFilled,
+                fillColor: fillColor,
+                focusColor: AppColor.white,
+                contentPadding: EdgeInsets.fromLTRB(20.w, 10.w, 20.w, 19.w),
+                border: OutlineInputBorder(
+                  // borderRadius: BorderRadius.circular(.r),
+                  borderSide: BorderSide(width: 1.w, color: AppColor.white),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  // borderRadius: BorderRadius.all(Radius.circular(border!.r)),
+                  borderSide: BorderSide(width: 1.w, color: borderColor!),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  // borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                  borderSide: BorderSide(width: 1.w, color: Colors.grey),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  // borderRadius: BorderRadius.all(Radius.circular(border!.r)),
+                  borderSide: BorderSide(width: 1.w, color: borderColor!),
+                ),
+                errorBorder: OutlineInputBorder(
+                    // borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                    borderSide: BorderSide(width: 1.w, color: Colors.red)),
+                focusedErrorBorder: OutlineInputBorder(
+                    // borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                    borderSide:
+                        BorderSide(width: 1.w, color: Colors.redAccent)),
+                prefixIcon: prefixWidget ??
+                    (prefixIcon != null
                         ? IconButton(
                             onPressed: onPasswordToggle,
-                            iconSize: size,
                             icon: Icon(
-                              suffixIcon,
-                              color: suffixIconColor,
+                              prefixIcon,
+                              color: prefixIconColor,
                             ))
                         : null),
-              )),
-          obscureText: obscureText!,
-          controller: controller,
-          readOnly: readOnly!,
-          onTap: onTapped,
-          key: formKey,
-          maxLines: maxline,
-          minLines: minline,
-          cursorColor: AppColor.black,
-          onChanged: onChange,
-          onFieldSubmitted: onEditCompleted,
-          validator: validator,
-        ),
+                suffixIcon: Padding(
+                  padding: EdgeInsets.all(1.5.w),
+                  child: suffixWidget ??
+                      (suffixIcon != null
+                          ? IconButton(
+                              onPressed: onPasswordToggle,
+                              iconSize: size,
+                              icon: Icon(
+                                suffixIcon,
+                                color: suffixIconColor,
+                              ))
+                          : null),
+                )),
+            obscureText: obscureText!,
+            controller: controller,
+            readOnly: readOnly!,
+            onTap: onTapped,
+            key: formKey,
+            maxLines: maxline,
+            minLines: minline,
+            cursorColor: AppColor.white,
+            onChanged: onChange,
+            onFieldSubmitted: onEditCompleted,
+            validator: validator,
+            style: const TextStyle(color: AppColor.white)),
       ],
     );
   }

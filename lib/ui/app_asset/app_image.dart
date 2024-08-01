@@ -1,6 +1,33 @@
-class AppImage{
-
+class AppImage {
   static const String fb = 'assets/svg/fb.svg';
+  static const String hot = 'assets/image/hot.jpeg';
   static const String google = 'assets/image/google.png';
+  static const String hoteldetail = 'assets/image/hotel_detail.png';
+  static const String pro = 'assets/image/pro.png';
   static const String map = 'assets/image/mapimage.png';
+  static const String map2 = 'assets/image/map.png';
+  static const String tabpic = 'assets/image/tab-pic.png';
+  static const String home = 'assets/svg/home.svg';
+  static const String discover = 'assets/svg/discover.svg';
+  static const String dinner = 'assets/svg/dinner.svg';
+  static const String gift = 'assets/svg/gift.svg';
+  static const String heart = 'assets/svg/heart.svg';
+  static const String profile = 'assets/svg/profile.svg';
+  static const String book = 'assets/svg/book.svg';
+  static const String clock = 'assets/svg/clock.svg';
+  static const String location = 'assets/svg/location.svg';
+  static const String hotel = 'assets/svg/house.svg';
+  static const String calendar = 'assets/svg/calendar.svg';
+  static const String setting = 'assets/svg/setting.svg';
+  static const String logincurve = 'assets/svg/logincurve.svg';
+  static const String lock = 'assets/svg/lock.svg';
+  static const String lock1 = 'assets/svg/lock1.svg';
+  static const String swimming = 'assets/svg/swimming.svg';
+  static const String help = 'assets/svg/headphone.svg';
+  static const String card = 'assets/svg/card.svg';
+  static const String car = 'assets/svg/car.svg';
+  static const String complete = 'assets/svg/completed.svg';
+  static const String gallery = 'assets/svg/gallery-import.svg';
+  static const String booksaved = 'assets/svg/book-saved.svg';
+  static const String wifi = 'assets/svg/wifi.svg';
 }

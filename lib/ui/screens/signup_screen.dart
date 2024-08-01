@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ninejahotel/ui/app_asset/app_color.dart';
 import 'package:ninejahotel/ui/app_asset/app_image.dart';
-import 'package:ninejahotel/ui/screens/home/home_screen.dart';
+import 'package:ninejahotel/ui/screens/dashboard.dart';
 import 'package:ninejahotel/ui/widget/button_widget.dart';
 import 'package:ninejahotel/ui/widget/text_form_widget.dart';
 import 'package:ninejahotel/ui/widget/text_widget.dart';
@@ -111,7 +111,7 @@ class SignupScreen extends StatelessWidget {
                 hint: 'First Name',
                 hintColor: AppColor.white,
                 label: 'Input Name',
-                labelColor: AppColor.white,
+                // labelColor: AppColor.white,
               ),
               SizedBox(
                 height: 20.h,
@@ -120,7 +120,7 @@ class SignupScreen extends StatelessWidget {
                 hint: 'Last Name',
                 hintColor: AppColor.white,
                 label: 'Input Last Name',
-                labelColor: AppColor.white,
+                // labelColor: AppColor.white,
               ),
               SizedBox(
                 height: 20.h,
@@ -129,7 +129,7 @@ class SignupScreen extends StatelessWidget {
                 hint: 'Telephone',
                 hintColor: AppColor.white,
                 label: 'Input Number',
-                labelColor: AppColor.white,
+                // labelColor: AppColor.white,
               ),
               SizedBox(
                 height: 20.h,
@@ -138,7 +138,7 @@ class SignupScreen extends StatelessWidget {
                 hint: 'Email',
                 hintColor: AppColor.white,
                 label: 'Input Email',
-                labelColor: AppColor.white,
+                // labelColor: AppColor.white,
               ),
               SizedBox(
                 height: 20.h,
@@ -147,7 +147,7 @@ class SignupScreen extends StatelessWidget {
                 hint: 'Referral Code',
                 hintColor: AppColor.white,
                 label: 'Input Code',
-                labelColor: AppColor.white,
+                // labelColor: AppColor.white,
               ),
               SizedBox(
                 height: 20.h,
@@ -156,7 +156,7 @@ class SignupScreen extends StatelessWidget {
                 hint: 'Password',
                 hintColor: AppColor.white,
                 label: 'Input Password',
-                labelColor: AppColor.white,
+                // labelColor: AppColor.white,
                 suffixIcon: Icons.visibility_outlined,
                 suffixIconColor: AppColor.white,
               ),
@@ -167,7 +167,7 @@ class SignupScreen extends StatelessWidget {
                   hint: 'Confirm Password',
                   hintColor: AppColor.white,
                   label: 'Input Password',
-                  labelColor: AppColor.white,
+                  // labelColor: AppColor.white,
                   suffixIcon: Icons.visibility_outlined,
                   suffixIconColor: AppColor.white),
               SizedBox(
@@ -179,7 +179,7 @@ class SignupScreen extends StatelessWidget {
                 color: AppColor.white,
                 buttonBorderColor: AppColor.transparent,
                 onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>  HomeScreen())),
+                    builder: (context) =>  const Dashboard())),
               )
             ],
           ),

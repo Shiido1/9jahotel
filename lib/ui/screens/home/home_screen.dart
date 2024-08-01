@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ninejahotel/ui/app_asset/app_color.dart';
 import 'package:ninejahotel/ui/app_asset/app_image.dart';
+
+import '../../widget/text_widget.dart';
+import '../hotel/hotel_detail.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,14 +21,12 @@ class HomeScreen extends StatelessWidget {
           child: IntrinsicHeight(
             child: Stack(
               children: [
-                // Image
                 Positioned.fill(
                   child: Image.asset(
                     AppImage.map,
                     fit: BoxFit.cover,
                   ),
                 ),
-                // Gradient overlay
                 Positioned.fill(
                   child: Container(
                     height: MediaQuery.of(context).size.height,
@@ -72,8 +74,14 @@ class HomeScreen extends StatelessWidget {
                                   margin: EdgeInsets.only(left: 4.8.w),
                                   height: 60.h,
                                   width: 10,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: AppColor.primary,
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(12.w),
+                                    child: SvgPicture.asset(
+                                      AppImage.setting,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -83,13 +91,127 @@ class HomeScreen extends StatelessWidget {
                             height: 300.h,
                           ),
                           ...[1, 2, 3, 4, 5].map(
-                            (o) => Container(
-                                margin: EdgeInsets.only(bottom: 20.w),
-                                height: 240.h,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                    color: AppColor.primary1,
-                                    border: Border.all(color: AppColor.black))),
+                            (o) => GestureDetector(
+                              onTap: () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => HotelDetail())),
+                              child: Stack(children: [
+                                Container(
+                                  margin: EdgeInsets.only(bottom: 20.w),
+                                  height: 240.h,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                      color: AppColor.primary1,
+                                      border:
+                                          Border.all(color: AppColor.black)),
+                                ),
+                                Image.asset(
+                                  AppImage.hot,
+                                  fit: BoxFit.fitWidth,
+                                  width: double.infinity,
+                                  height: 128.0.h,
+                                ),
+                                Positioned(
+                                  bottom: 32.0,
+                                  left: 6,
+                                  right: 10,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          TextView(
+                                            text: 'Fairmont Hotel',
+                                            fontSize: 21.2.sp,
+                                            fontWeight: FontWeight.w700,
+                                            color: AppColor.black,
+                                          ),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    EdgeInsets.only(top: 2.2.w),
+                                                child: Icon(
+                                                  Icons.location_on_rounded,
+                                                  size: 17.2.sp,
+                                                  color: const Color.fromARGB(
+                                                      255, 106, 165, 165),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 6.w,
+                                              ),
+                                              SizedBox(
+                                                width: 168.0.w,
+                                                child: TextView(
+                                                  text:
+                                                      'Guzape 24231,Abuja F.C.T',
+                                                  fontSize: 14.2.sp,
+                                                  maxLines: 2,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: AppColor.grey,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 4.h,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              ...[1, 2, 3, 4].map((o) => Icon(
+                                                    Icons.star,
+                                                    size: 14.sp,
+                                                    color: AppColor.primary,
+                                                  )),
+                                              SizedBox(
+                                                width: 20.w,
+                                              ),
+                                              TextView(
+                                                text: '120 Reviews',
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: AppColor.grey,
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          TextView(
+                                            text: 'N199,000',
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.w700,
+                                            color: AppColor.primary,
+                                          ),
+                                          TextView(
+                                            text: '/Per Night',
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.w400,
+                                            color: AppColor.grey,
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ]),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 100.h,
                           )
                         ],
                       ),
@@ -101,30 +223,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      // body: Container(
-      //   decoration: new BoxDecoration(
-      //       // image: DecorationImage(
-      //       //     image: AssetImage(AppImage.map),
-      //       //     alignment: Alignment.topCenter,
-      //       //     fit: BoxFit.contain,
-      //       //     opacity: .5),
-      //       gradient: new LinearGradient(
-      //           colors: [
-      //         Color.fromARGB(90, 61, 60, 60),
-      //         Colors.black,
-      //       ],
-      //           stops: [
-      //         0.1,
-      //         2.0
-      //       ],
-      //           begin: FractionalOffset.topCenter,
-      //           end: FractionalOffset.bottomCenter,
-      //           tileMode: TileMode.repeated)),
-      // child: Image.asset(
-      //   AppImage.map,
-      //   fit: BoxFit.cover,
-      // ),
-      // ),
     );
   }
 }

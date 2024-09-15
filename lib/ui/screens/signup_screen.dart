@@ -150,7 +150,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         height: 20.h,
                       ),
                       GestureDetector(
-                        onTap: ()=>navigate.navigateTo(Routes.loginScreen),
+                        onTap: () => navigate.navigateTo(Routes.loginScreen),
                         child: TextView(
                           text: 'Already have an account? Login',
                           fontSize: 18.sp,
@@ -180,7 +180,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   context);
                             }
                           }),
-                          SizedBox(
+                      SizedBox(
                         height: 30.h,
                       ),
                     ],

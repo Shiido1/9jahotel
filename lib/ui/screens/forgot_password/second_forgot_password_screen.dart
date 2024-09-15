@@ -12,10 +12,12 @@ class SecondForgotPasswordScreen extends StatefulWidget {
   const SecondForgotPasswordScreen({super.key});
 
   @override
-  State<SecondForgotPasswordScreen> createState() => _SecondForgotPasswordScreenState();
+  State<SecondForgotPasswordScreen> createState() =>
+      _SecondForgotPasswordScreenState();
 }
 
-class _SecondForgotPasswordScreenState extends State<SecondForgotPasswordScreen> {
+class _SecondForgotPasswordScreenState
+    extends State<SecondForgotPasswordScreen> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController otp = TextEditingController();
 
@@ -82,7 +84,7 @@ class _SecondForgotPasswordScreenState extends State<SecondForgotPasswordScreen>
                       //   controller: email,
                       //   validator: AppValidator.validateString(),
                       // ),
-                      
+
                       SizedBox(
                         height: 50.h,
                       ),
@@ -92,9 +94,7 @@ class _SecondForgotPasswordScreenState extends State<SecondForgotPasswordScreen>
                           color: AppColor.white,
                           buttonBorderColor: AppColor.transparent,
                           onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                            
-                            }
+                            if (formKey.currentState!.validate()) {}
                           })
                     ],
                   ),

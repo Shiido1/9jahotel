@@ -18,6 +18,4 @@ class FavoriteRepoImpl {
     final response = await _contract.getFavorite();
     return response;
   }
-
 }
-

@@ -86,7 +86,6 @@ class _ResetPasswordState extends State<ResetPassword> {
                         // obscureText: !model.isTogglePassword,
                         // onPasswordToggle: model.isOnTogglePassword,
                       ),
-                      
                       SizedBox(
                         height: 50.h,
                       ),
@@ -96,9 +95,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                           color: AppColor.white,
                           buttonBorderColor: AppColor.transparent,
                           onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                            
-                            }
+                            if (formKey.currentState!.validate()) {}
                           })
                     ],
                   ),

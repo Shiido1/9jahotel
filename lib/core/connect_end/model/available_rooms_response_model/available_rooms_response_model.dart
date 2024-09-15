@@ -6,15 +6,15 @@ part 'available_rooms_response_model.g.dart';
 
 @JsonSerializable()
 class AvailableRoomsResponseModel {
-	bool? success;
-	String? message;
-	List<Datum>? data;
+  bool? success;
+  String? message;
+  List<Datum>? data;
 
-	AvailableRoomsResponseModel({this.success, this.message, this.data});
+  AvailableRoomsResponseModel({this.success, this.message, this.data});
 
-	factory AvailableRoomsResponseModel.fromJson(Map<String, dynamic> json) {
-		return _$AvailableRoomsResponseModelFromJson(json);
-	}
+  factory AvailableRoomsResponseModel.fromJson(Map<String, dynamic> json) {
+    return _$AvailableRoomsResponseModelFromJson(json);
+  }
 
-	Map<String, dynamic> toJson() => _$AvailableRoomsResponseModelToJson(this);
+  Map<String, dynamic> toJson() => _$AvailableRoomsResponseModelToJson(this);
 }

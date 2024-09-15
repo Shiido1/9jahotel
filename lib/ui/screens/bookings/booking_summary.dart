@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ninejahotel/ui/app_asset/app_color.dart';
-import 'package:ninejahotel/ui/screens/bookings/booking_info_screen.dart';
 import '../../app_asset/app_image.dart';
 import '../../widget/button_widget.dart';
 import '../../widget/text_widget.dart';
@@ -227,10 +226,12 @@ class BookingSummary extends StatelessWidget {
                       buttonColor: AppColor.primary,
                       color: AppColor.white,
                       buttonBorderColor: AppColor.white,
-                      onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const BookingInfoScreen()))),
+                      onPressed: () {}
+                      //  Navigator.of(context).push(
+                      //     MaterialPageRoute(
+                      //         builder: (context) =>
+                      //             const BookingInfoScreen()))
+                      ),
                 )
               ],
             ),

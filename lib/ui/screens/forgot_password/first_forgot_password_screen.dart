@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
@@ -15,7 +14,8 @@ class FirstForgotPasswordScreen extends StatefulWidget {
   const FirstForgotPasswordScreen({super.key});
 
   @override
-  State<FirstForgotPasswordScreen> createState() => _FirstForgotPasswordScreenState();
+  State<FirstForgotPasswordScreen> createState() =>
+      _FirstForgotPasswordScreenState();
 }
 
 class _FirstForgotPasswordScreenState extends State<FirstForgotPasswordScreen> {
@@ -75,7 +75,6 @@ class _FirstForgotPasswordScreenState extends State<FirstForgotPasswordScreen> {
                         controller: email,
                         validator: AppValidator.validateString(),
                       ),
-                      
                       SizedBox(
                         height: 50.h,
                       ),
@@ -85,9 +84,7 @@ class _FirstForgotPasswordScreenState extends State<FirstForgotPasswordScreen> {
                           color: AppColor.white,
                           buttonBorderColor: AppColor.transparent,
                           onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                            
-                            }
+                            if (formKey.currentState!.validate()) {}
                           })
                     ],
                   ),

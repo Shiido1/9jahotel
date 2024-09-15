@@ -35,7 +35,6 @@ class AuthViewModel extends BaseViewModel {
   bool get isTogglePassword => _isTogglePassword;
   bool _isTogglePassword = false;
 
-
   bool get isTogglePasswordConfirm => _isTogglePasswordConfirm;
   bool _isTogglePasswordConfirm = false;
 

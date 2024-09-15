@@ -3,7 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ninejahotel/ui/app_asset/app_color.dart';
+import 'package:stacked/stacked.dart';
 
+import '../../../core/connect_end/model/available_rooms_response_model/datum.dart';
+import '../../../core/connect_end/view_model/bookings_view_model.dart';
+import '../../../core/core_folder/app/app.locator.dart';
 import '../../widget/button_widget.dart';
 import '../../widget/text_widget.dart';
 import 'hotel_screen.dart';
@@ -11,28 +15,28 @@ import 'hotel_screen.dart';
 class HotelRoomCategory extends StatelessWidget {
   HotelRoomCategory({super.key});
 
-  List<String> rooms = [
-    '24',
-    '243',
-    '242',
-    '245',
-    '324',
-    '344',
-    '454',
-    '324',
-    '424',
-    '444',
-    '454',
-    '404',
-    '414',
-    '434',
-    '354',
-    '464',
-    '484',
-    '334',
-    '430',
-    '432',
-  ];
+  // List<String> rooms = [
+  //   '24',
+  //   '243',
+  //   '242',
+  //   '245',
+  //   '324',
+  //   '344',
+  //   '454',
+  //   '324',
+  //   '424',
+  //   '444',
+  //   '454',
+  //   '404',
+  //   '414',
+  //   '434',
+  //   '354',
+  //   '464',
+  //   '484',
+  //   '334',
+  //   '430',
+  //   '432',
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -56,79 +60,127 @@ class HotelRoomCategory extends StatelessWidget {
           color: AppColor.white,
         ),
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.w),
-        child: Center(
-          child: Column(
-            children: [
-              TextView(
-                text: 'Select available room ',
-                fontSize: 15.2.sp,
-                fontWeight: FontWeight.w500,
-                color: AppColor.white,
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              Container(
-                padding: EdgeInsets.all(8.w),
-                margin: EdgeInsets.only(left: 7.w, right: 7.w),
-                color: AppColor.lightGrey,
-                child: TextView(
-                  text: '(Standard Category)',
-                  fontSize: 16.6.sp,
-                  fontWeight: FontWeight.w700,
-                  color: AppColor.primary,
+      body: ViewModelBuilder<BookingsViewModel>.reactive(
+          viewModelBuilder: () => locator<BookingsViewModel>(),
+          onViewModelReady: (model) {},
+          disposeViewModel: false,
+          builder: (_, BookingsViewModel model, __) {
+            return SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.w),
+              child: Center(
+                child: Column(
+                  children: [
+                    TextView(
+                      text: 'Select available room ',
+                      fontSize: 15.2.sp,
+                      fontWeight: FontWeight.w500,
+                      color: AppColor.white,
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(8.w),
+                      margin: EdgeInsets.only(left: 7.w, right: 7.w),
+                      color: AppColor.lightGrey,
+                      child: TextView(
+                        text: '(Standard Category)',
+                        fontSize: 16.6.sp,
+                        fontWeight: FontWeight.w700,
+                        color: AppColor.primary,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30.h,
+                    ),
+                    if (model.availableRoomsResponseModel != null)
+                      SizedBox(
+                        height: 450.h,
+                        child: GridView.count(
+                          crossAxisCount: 4,
+                          mainAxisSpacing: 13,
+                          crossAxisSpacing: 10,
+                          children: [
+                            ...model.availableRoomsResponseModel!.data!
+                                .map((o) => contContainer(o:o))
+                          ],
+                        ),
+                      ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    ButtonWidget(
+                        buttonText: 'Continue',
+                        buttonColor: AppColor.primary,
+                        color: AppColor.white,
+                        buttonWidth: double.infinity,
+                        buttonBorderColor: AppColor.transparent,
+                        onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => HotelScreen()))),
+                    SizedBox(
+                      height: 40.h,
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(
-                height: 30.h,
-              ),
-              
-              SizedBox(
-                height: 450.h,
-                child: GridView.count(
-                  crossAxisCount: 4,
-                  mainAxisSpacing: 13,
-                  crossAxisSpacing: 10,
-                  children: [...rooms.map((o) => contContainer(o))],
-                ),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              ButtonWidget(
-                  buttonText: 'Continue',
-                  buttonColor: AppColor.primary,
-                  color: AppColor.white,
-                  buttonWidth: double.infinity,
-                  buttonBorderColor: AppColor.transparent,
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => HotelScreen()))),
-              SizedBox(
-                height: 40.h,
-              ),
-            ],
-          ),
-        ),
-      ),
+            );
+          }),
     );
   }
 
-  contContainer(text) => Container(
-        width: 100.w,
-        height: 100.h,
-        padding: EdgeInsets.all(16.w),
-        decoration: BoxDecoration(
-            color: AppColor.darkgrey,
-            border: Border(
-                top: BorderSide(color: AppColor.lightGrey, width: 10.sp))),
-        child: Center(
-          child: TextView(
-            text: text,
-            fontSize: 21.2.sp,
-            fontWeight: FontWeight.w700,
-            color: AppColor.white,
+  contContainer({Datum? o, context}) => GestureDetector(
+        onTap: () => showModalBottomSheet(
+          context: context,
+          isScrollControlled: true, // To make it full-screen
+          builder: (BuildContext context) {
+            return DraggableScrollableSheet(
+              expand: false,
+              builder: (context, scrollController) {
+                return SingleChildScrollView(
+                  controller: scrollController,
+                  child: Container(
+                    padding: EdgeInsets.all(16.0),
+                    height: MediaQuery.of(context).size.height *
+                        0.9, // Nearly full screen
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          'Select Room',
+                          style: TextStyle(fontSize: 18, color: AppColor.white),
+                        ),
+                        SizedBox(height: 6.h),
+                        Divider(
+                          color: AppColor.white,
+                        ),
+                        SizedBox(height: 6.h),
+                        Text(
+                          'Room Tour',
+                          style: TextStyle(fontSize: 18, color: AppColor.white),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        ),
+        child: Container(
+          width: 100.w,
+          height: 100.h,
+          padding: EdgeInsets.all(16.w),
+          decoration: BoxDecoration(
+              color: AppColor.darkgrey,
+              border: Border(
+                  top: BorderSide(color: AppColor.lightGrey, width: 10.sp))),
+          child: Center(
+            child: TextView(
+              text: o?.number ?? '',
+              fontSize: 21.2.sp,
+              fontWeight: FontWeight.w700,
+              color: AppColor.white,
+            ),
           ),
         ),
       );

@@ -69,8 +69,8 @@ class HotelScreen extends StatelessWidget {
                   color: AppColor.white,
                   buttonWidth: double.infinity,
                   buttonBorderColor: AppColor.transparent,
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>  HotelDetail()))),
+                  onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => HotelDetail()))),
               SizedBox(
                 height: 40.h,
               ),

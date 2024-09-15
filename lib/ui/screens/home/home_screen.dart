@@ -494,8 +494,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   hotelListContainer({context, Datum? d}) => GestureDetector(
-        onTap: () => Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => HotelDetail(data: d))),
+        onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => HotelDetail(data: d))),
         child: Stack(children: [
           Container(
             margin: EdgeInsets.only(bottom: 20.w),

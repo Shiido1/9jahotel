@@ -20,7 +20,7 @@ class AuthApi {
     try {
       final response = await _service.call(
           UrlConfig.register, RequestMethod.post,
-          data:  FormData.fromMap(signUpEntity.toJson()));
+          data: FormData.fromMap(signUpEntity.toJson()));
       logger.d(response.data);
       return RegisterResponseModel.fromJson(response.data);
     } catch (e) {

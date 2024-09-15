@@ -4,14 +4,14 @@ part 'links.g.dart';
 
 @JsonSerializable()
 class Links {
-	String? first;
-	String? last;
-	dynamic prev;
-	dynamic next;
+  String? first;
+  String? last;
+  dynamic prev;
+  dynamic next;
 
-	Links({this.first, this.last, this.prev, this.next});
+  Links({this.first, this.last, this.prev, this.next});
 
-	factory Links.fromJson(Map<String, dynamic> json) => _$LinksFromJson(json);
+  factory Links.fromJson(Map<String, dynamic> json) => _$LinksFromJson(json);
 
-	Map<String, dynamic> toJson() => _$LinksToJson(this);
+  Map<String, dynamic> toJson() => _$LinksToJson(this);
 }

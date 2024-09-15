@@ -26,10 +26,10 @@ class _DashboardState extends State<Dashboard> {
 
   final List<Widget> _body = [
     const HomeScreen(),
-    const FavoriteScreen(),
+    FavoriteScreen(),
     BookingScreen(),
     const ReferAndEarn(),
-     ProfileScreen(),
+    ProfileScreen(),
   ];
 
   Future<bool> willPopControl() async {

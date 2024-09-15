@@ -69,13 +69,10 @@ class ApiError {
                 errorDescription = apiErrorModel?.error['discount'][0];
               } else if (apiErrorModel?.error['checked_in'] != null) {
                 errorDescription = apiErrorModel?.error['checked_in'][0];
-              
               } else if (apiErrorModel?.error['date'] != null) {
-                 errorDescription = apiErrorModel?.error['date'][0];
-              
+                errorDescription = apiErrorModel?.error['date'][0];
               } else if (apiErrorModel?.error['checked_in'] != null) {
                 errorDescription = apiErrorModel?.error['checked_in'][0];
-              
               } else if (apiErrorModel?.error['checked_out'] != null) {
                 errorDescription = apiErrorModel?.error['checked_out'][0];
               }

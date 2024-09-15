@@ -6,7 +6,6 @@ import '../model/login_response_model/login_response_model.dart';
 import '../model/register_entity_model.dart';
 import '../model/register_response_model/register_response_model.dart';
 
-
 @lazySingleton
 class AuthContractsImpl {
   final _api = locator<AuthApi>();

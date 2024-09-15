@@ -10,6 +10,7 @@ import 'package:ninejahotel/core/connect_end/repo/booking_repo_implementation.da
 import 'package:ninejahotel/core/core_folder/app/app.logger.dart';
 import 'package:ninejahotel/ui/app_asset/app_utils.dart';
 import 'package:stacked/stacked.dart';
+import '../../../ui/screens/hotel/hotel_room_category.dart';
 import '../model/cities_response_model/datum.dart' as ci;
 import '../model/searched_hotels_response_model/datum.dart' as se;
 
@@ -159,6 +160,10 @@ class BookingsViewModel extends BaseViewModel {
               id: id, checkin: checkin, checkout: checkout),
           throwException: true);
       _isLoading = false;
+      if (_availableRoomsResponseModel?.success == true) {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => HotelRoomCategory()));
+      }
     } catch (e) {
       _isLoading = false;
       logger.d(e);
@@ -183,9 +188,8 @@ class BookingsViewModel extends BaseViewModel {
     }
     notifyListeners();
   }
-  
-  Future<void> roomImages(
-      {String? id, context}) async {
+
+  Future<void> roomImages({String? id, context}) async {
     try {
       _isLoading = true;
       _roomImageResponseModel = await runBusyFuture(

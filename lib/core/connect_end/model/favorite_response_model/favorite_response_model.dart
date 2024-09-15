@@ -6,15 +6,15 @@ part 'favorite_response_model.g.dart';
 
 @JsonSerializable()
 class FavoriteResponseModel {
-	bool? success;
-	String? message;
-	Data? data;
+  bool? success;
+  String? message;
+  Data? data;
 
-	FavoriteResponseModel({this.success, this.message, this.data});
+  FavoriteResponseModel({this.success, this.message, this.data});
 
-	factory FavoriteResponseModel.fromJson(Map<String, dynamic> json) {
-		return _$FavoriteResponseModelFromJson(json);
-	}
+  factory FavoriteResponseModel.fromJson(Map<String, dynamic> json) {
+    return _$FavoriteResponseModelFromJson(json);
+  }
 
-	Map<String, dynamic> toJson() => _$FavoriteResponseModelToJson(this);
+  Map<String, dynamic> toJson() => _$FavoriteResponseModelToJson(this);
 }

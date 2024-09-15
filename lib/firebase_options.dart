@@ -64,8 +64,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1092996801737',
     projectId: 'jahotel-c3b37',
     storageBucket: 'jahotel-c3b37.appspot.com',
-    androidClientId: '1092996801737-0q7fjlmccvr6r9e38piuq68olnd3rhm7.apps.googleusercontent.com',
-    iosClientId: '1092996801737-6shmvkqfq3en3ul0pc65khg0hpem86b3.apps.googleusercontent.com',
+    androidClientId:
+        '1092996801737-0q7fjlmccvr6r9e38piuq68olnd3rhm7.apps.googleusercontent.com',
+    iosClientId:
+        '1092996801737-6shmvkqfq3en3ul0pc65khg0hpem86b3.apps.googleusercontent.com',
     iosBundleId: 'com.ninejahotel',
   );
 
@@ -75,8 +77,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1092996801737',
     projectId: 'jahotel-c3b37',
     storageBucket: 'jahotel-c3b37.appspot.com',
-    androidClientId: '1092996801737-0q7fjlmccvr6r9e38piuq68olnd3rhm7.apps.googleusercontent.com',
-    iosClientId: '1092996801737-6shmvkqfq3en3ul0pc65khg0hpem86b3.apps.googleusercontent.com',
+    androidClientId:
+        '1092996801737-0q7fjlmccvr6r9e38piuq68olnd3rhm7.apps.googleusercontent.com',
+    iosClientId:
+        '1092996801737-6shmvkqfq3en3ul0pc65khg0hpem86b3.apps.googleusercontent.com',
     iosBundleId: 'com.ninejahotel',
   );
 

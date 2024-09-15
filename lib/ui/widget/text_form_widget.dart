@@ -172,7 +172,7 @@ class TextFormWidget extends StatelessWidget {
             onChanged: onChange,
             onFieldSubmitted: onEditCompleted,
             validator: validator,
-            style:  TextStyle(color: cusorColor)),
+            style: TextStyle(color: cusorColor)),
       ],
     );
   }

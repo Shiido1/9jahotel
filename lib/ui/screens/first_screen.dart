@@ -14,10 +14,9 @@ import '../widget/button_widget.dart';
 import '../widget/text_widget.dart';
 
 class FirstScreen extends StatelessWidget {
-   FirstScreen({super.key});
+  FirstScreen({super.key});
 
-
-final _session = SharedPreferencesService();
+  final _session = SharedPreferencesService();
 
   signInWithFacebook(context) async {
     final LoginResult loginResult = await FacebookAuth.instance.login();
@@ -178,7 +177,7 @@ final _session = SharedPreferencesService();
                 color: AppColor.white,
                 buttonBorderColor: AppColor.transparent,
                 onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>  const SignupScreen())),
+                    builder: (context) => const SignupScreen())),
               ),
               SizedBox(
                 height: 20.h,

@@ -13,12 +13,16 @@ import 'package:stacked_shared/stacked_shared.dart';
 
 import '../../api_folder/auth_api.dart';
 import '../../api_folder/booking_api.dart';
+import '../../api_folder/favorite_api.dart';
 import '../../connect_end/contract/booking_contract_implemention.dart';
 import '../../connect_end/contract/contract_implementation.dart';
+import '../../connect_end/contract/favorite_contract_implementation.dart';
 import '../../connect_end/repo/booking_repo_implementation.dart';
+import '../../connect_end/repo/favorite_repo_implementation.dart';
 import '../../connect_end/repo/repo_implementation.dart';
 import '../../connect_end/view_model/auth_view_model.dart';
 import '../../connect_end/view_model/bookings_view_model.dart';
+import '../../connect_end/view_model/favorites_view_model.dart';
 import '../manager/shared_preference.dart';
 import '../network/network_service.dart';
 
@@ -40,10 +44,14 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => NetworkService());
   locator.registerLazySingleton(() => AuthApi());
   locator.registerLazySingleton(() => BookingApi());
+  locator.registerLazySingleton(() => FavoriteApi());
   locator.registerLazySingleton(() => AuthContractsImpl());
   locator.registerLazySingleton(() => BookingContractsImpl());
+  locator.registerLazySingleton(() => FavoriteContractsImpl());
   locator.registerLazySingleton(() => AuthRepoImpl());
   locator.registerLazySingleton(() => BookingRepoImpl());
+  locator.registerLazySingleton(() => FavoriteRepoImpl());
   locator.registerLazySingleton(() => AuthViewModel());
   locator.registerLazySingleton(() => BookingsViewModel());
+  locator.registerLazySingleton(() => FavoritesViewModel());
 }

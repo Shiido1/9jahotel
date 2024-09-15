@@ -55,7 +55,7 @@ class SharedPreferencesService {
       await sharedPreferences!.clear();
       await FacebookAuth.instance.logOut();
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) =>  FirstScreen()));
+          .push(MaterialPageRoute(builder: (context) => FirstScreen()));
       // await locator<HiveManager>().clearAllBox();
       // getLogger('logout').d(sharedPreferences.toString());
       return true;

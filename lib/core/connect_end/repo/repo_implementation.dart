@@ -31,5 +31,4 @@ class AuthRepoImpl {
     _chache(response.data);
     return response;
   }
-
 }

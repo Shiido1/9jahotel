@@ -5,8 +5,12 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i7;
+import 'package:flutter/material.dart' as _i8;
 import 'package:flutter/material.dart';
+import 'package:ninejahotel/core/connect_end/model/searched_hotels_response_model/datum.dart'
+    as _i9;
+import 'package:ninejahotel/ui/screens/bookings/booking_info_screen.dart'
+    as _i7;
 import 'package:ninejahotel/ui/screens/dashboard.dart' as _i2;
 import 'package:ninejahotel/ui/screens/first_screen.dart' as _i3;
 import 'package:ninejahotel/ui/screens/forgot_password/first_forgot_password_screen.dart'
@@ -14,7 +18,7 @@ import 'package:ninejahotel/ui/screens/forgot_password/first_forgot_password_scr
 import 'package:ninejahotel/ui/screens/login_screen.dart' as _i4;
 import 'package:ninejahotel/ui/screens/reset_password.dart' as _i6;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i8;
+import 'package:stacked_services/stacked_services.dart' as _i10;
 
 class Routes {
   static const dashboard = '/';
@@ -27,12 +31,15 @@ class Routes {
 
   static const resetPassword = '/reset-password';
 
+  static const bookingInfoScreen = '/booking-info-screen';
+
   static const all = <String>{
     dashboard,
     firstScreen,
     loginScreen,
     firstForgotPasswordScreen,
     resetPassword,
+    bookingInfoScreen,
   };
 }
 
@@ -58,11 +65,15 @@ class StackedRouter extends _i1.RouterBase {
       Routes.resetPassword,
       page: _i6.ResetPassword,
     ),
+    _i1.RouteDef(
+      Routes.bookingInfoScreen,
+      page: _i7.BookingInfoScreen,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.Dashboard: (data) {
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.Dashboard(),
         settings: data,
       );
@@ -71,26 +82,33 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<FirstScreenArguments>(
         orElse: () => const FirstScreenArguments(),
       );
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => _i3.FirstScreen(key: args.key),
         settings: data,
       );
     },
     _i4.LoginScreen: (data) {
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.LoginScreen(),
         settings: data,
       );
     },
     _i5.FirstForgotPasswordScreen: (data) {
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.FirstForgotPasswordScreen(),
         settings: data,
       );
     },
     _i6.ResetPassword: (data) {
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.ResetPassword(),
+        settings: data,
+      );
+    },
+    _i7.BookingInfoScreen: (data) {
+      final args = data.getArgs<BookingInfoScreenArguments>(nullOk: false);
+      return _i8.MaterialPageRoute<dynamic>(
+        builder: (context) => _i7.BookingInfoScreen(key: args.key, d: args.d),
         settings: data,
       );
     },
@@ -106,7 +124,7 @@ class StackedRouter extends _i1.RouterBase {
 class FirstScreenArguments {
   const FirstScreenArguments({this.key});
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   @override
   String toString() {
@@ -125,7 +143,34 @@ class FirstScreenArguments {
   }
 }
 
-extension NavigatorStateExtension on _i8.NavigationService {
+class BookingInfoScreenArguments {
+  const BookingInfoScreenArguments({
+    this.key,
+    required this.d,
+  });
+
+  final _i8.Key? key;
+
+  final _i9.Datum? d;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "d": "$d"}';
+  }
+
+  @override
+  bool operator ==(covariant BookingInfoScreenArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.d == d;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ d.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i10.NavigationService {
   Future<dynamic> navigateToDashboard([
     int? routerId,
     bool preventDuplicates = true,
@@ -141,7 +186,7 @@ extension NavigatorStateExtension on _i8.NavigationService {
   }
 
   Future<dynamic> navigateToFirstScreen({
-    _i7.Key? key,
+    _i8.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -198,6 +243,23 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToBookingInfoScreen({
+    _i8.Key? key,
+    required _i9.Datum? d,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.bookingInfoScreen,
+        arguments: BookingInfoScreenArguments(key: key, d: d),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithDashboard([
     int? routerId,
     bool preventDuplicates = true,
@@ -213,7 +275,7 @@ extension NavigatorStateExtension on _i8.NavigationService {
   }
 
   Future<dynamic> replaceWithFirstScreen({
-    _i7.Key? key,
+    _i8.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -264,6 +326,23 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.resetPassword,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithBookingInfoScreen({
+    _i8.Key? key,
+    required _i9.Datum? d,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.bookingInfoScreen,
+        arguments: BookingInfoScreenArguments(key: key, d: d),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

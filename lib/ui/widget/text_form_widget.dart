@@ -35,8 +35,9 @@ class TextFormWidget extends StatelessWidget {
   final TextInputType? keyboardType;
   final Color? suffixIconColor;
   final Color? borderColor;
-  // final Color labelColor;
+  final Color labelColor;
   final Color hintColor;
+  final Color cusorColor;
   final Color? fillColor;
   final Color? prefixIconColor;
   final Key? formKey;
@@ -78,11 +79,13 @@ class TextFormWidget extends StatelessWidget {
     this.size,
     this.text,
     this.borderColor = AppColor.white,
+    this.cusorColor = AppColor.white,
     this.maxline = 1,
     this.border = 4,
     this.minline,
     this.focusNode,
     this.hintColor = AppColor.black,
+    this.labelColor = AppColor.white,
   }) : super(key: key);
 
   @override
@@ -108,7 +111,7 @@ class TextFormWidget extends StatelessWidget {
             focusNode: focusNode,
             decoration: InputDecoration(
                 labelText: label ?? '',
-                labelStyle: const TextStyle(color: AppColor.white),
+                labelStyle: TextStyle(color: labelColor),
                 filled: isFilled,
                 fillColor: fillColor,
                 focusColor: AppColor.white,
@@ -165,11 +168,11 @@ class TextFormWidget extends StatelessWidget {
             key: formKey,
             maxLines: maxline,
             minLines: minline,
-            cursorColor: AppColor.white,
+            cursorColor: cusorColor,
             onChanged: onChange,
             onFieldSubmitted: onEditCompleted,
             validator: validator,
-            style: const TextStyle(color: AppColor.white)),
+            style:  TextStyle(color: cusorColor)),
       ],
     );
   }

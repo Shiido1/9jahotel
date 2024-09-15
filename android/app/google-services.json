@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "1092996801737",
+    "project_id": "jahotel-c3b37",
+    "storage_bucket": "jahotel-c3b37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092996801737:android:1d96646540d6f16c64d918",
+        "android_client_info": {
+          "package_name": "com.ninejahotel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1092996801737-pkfmf20cche6tba29hns0cmkhen8dhv3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuKJSwtrACpncxgzwPxt-NZGeQ6ujCT38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1092996801737-pkfmf20cche6tba29hns0cmkhen8dhv3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1092996801737-6shmvkqfq3en3ul0pc65khg0hpem86b3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ninejahotel"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092996801737:android:08a72ae3c6619b0364d918",
+        "android_client_info": {
+          "package_name": "com.ninejahotel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1092996801737-0q7fjlmccvr6r9e38piuq68olnd3rhm7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ninejahotel",
+            "certificate_hash": "5e6498ba7c7d9dc5e63fc66e761f64e02f36485c"
+          }
+        },
+        {
+          "client_id": "1092996801737-pkfmf20cche6tba29hns0cmkhen8dhv3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuKJSwtrACpncxgzwPxt-NZGeQ6ujCT38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1092996801737-pkfmf20cche6tba29hns0cmkhen8dhv3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1092996801737-6shmvkqfq3en3ul0pc65khg0hpem86b3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ninejahotel"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

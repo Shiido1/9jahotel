@@ -4,11 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ninejahotel/ui/app_asset/app_color.dart';
 import 'package:ninejahotel/ui/app_asset/app_image.dart';
+import '../../../core/connect_end/model/searched_hotels_response_model/datum.dart';
 import '../../widget/button_widget.dart';
 import '../../widget/text_widget.dart';
 
 class HotelDetail extends StatelessWidget {
-  HotelDetail({super.key});
+  HotelDetail({super.key, this.data});
+  Datum? data;
 
   List<String> svgImage = [
     AppImage.wifi,
@@ -60,7 +62,7 @@ class HotelDetail extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextView(
-                                text: 'Fairmont Hotel',
+                                text: data?.name ?? '',
                                 fontSize: 19.2.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColor.black,
@@ -83,7 +85,7 @@ class HotelDetail extends StatelessWidget {
                                   SizedBox(
                                     width: 168.0.w,
                                     child: TextView(
-                                      text: 'Guzape 24231,Abuja F.C.T',
+                                      text: data?.address ?? '',
                                       fontSize: 12.2.sp,
                                       maxLines: 2,
                                       fontWeight: FontWeight.w500,
@@ -107,7 +109,7 @@ class HotelDetail extends StatelessWidget {
                                     width: 20.w,
                                   ),
                                   TextView(
-                                    text: '120 Reviews',
+                                    text: data?.reviews ?? '',
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500,
                                     color: AppColor.grey,
@@ -120,7 +122,7 @@ class HotelDetail extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               TextView(
-                                text: 'N199,000',
+                                text: 'N${data?.onlinePrice}',
                                 fontSize: 17.2.sp,
                                 fontWeight: FontWeight.w700,
                                 color: AppColor.primary,

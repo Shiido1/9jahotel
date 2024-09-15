@@ -6,10 +6,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ninejahotel/ui/app_asset/app_color.dart';
 import 'package:ninejahotel/ui/app_asset/app_image.dart';
 
+import '../../../core/core_folder/manager/shared_preference.dart';
 import '../../widget/text_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+
+  final _session = SharedPreferencesService();
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +32,33 @@ class ProfileScreen extends StatelessWidget {
               padding: EdgeInsets.all(12.w),
               child: Row(
                 children: [
-                  Image.asset(
-                    AppImage.pro,
-                    height: 64.8.h,
-                    width: 64.8.w,
-                  ),
+                  _session.usersData["user"] != null
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(34.0),
+                          child: Container(
+                            color: AppColor.white.withOpacity(.2),
+                            padding: EdgeInsets.all(2.2.w),
+                            child: Icon(
+                              Icons.person,
+                              size: 54.8.sp,
+                              color: AppColor.white,
+                            ),
+                          ),
+                        )
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(34.0),
+                          child: _session.isLoggedInFb == true
+                              ? Image.network(
+                                  '${_session.usersData['picture']['data']['url']}',
+                                  height: 64.8.h,
+                                  width: 64.8.w,
+                                )
+                              : Image.network(
+                                  '${_session.usersData['picture']}',
+                                  height: 64.8.h,
+                                  width: 64.8.w,
+                                ),
+                        ),
                   SizedBox(
                     width: 20.w,
                   ),
@@ -42,13 +67,17 @@ class ProfileScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       TextView(
-                        text: 'Mahdi Ibrahim',
+                        text: _session.usersData["user"] != null
+                            ? '${_session.usersData["user"]["firstname"]} ${_session.usersData["user"]["lastname"]}'
+                            : '${_session.usersData['name']}',
                         fontSize: 21.2.sp,
                         fontWeight: FontWeight.w500,
                         color: AppColor.white,
                       ),
                       TextView(
-                        text: 'ibrahim34523',
+                        text: _session.usersData["user"] != null
+                            ? '${_session.usersData["user"]["email"]}'
+                            : '${_session.usersData['email']}',
                         fontSize: 15.2.sp,
                         fontWeight: FontWeight.w500,
                         color: AppColor.primary,
@@ -101,21 +130,24 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 20.h,
             ),
-            Container(
-                width: double.infinity,
-                padding: EdgeInsets.all(22.w),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.r),
-                    color: AppColor.darkgrey),
-                child: Column(
-                  children: [
-                    proDetails(
-                        text: 'Log Out',
-                        image: AppImage.logincurve,
-                        islogout: true,
-                        color: AppColor.red),
-                  ],
-                )),
+            GestureDetector(
+              onTap: () => _session.logOut(context),
+              child: Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(22.w),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      color: AppColor.darkgrey),
+                  child: Column(
+                    children: [
+                      proDetails(
+                          text: 'Log Out',
+                          image: AppImage.logincurve,
+                          islogout: true,
+                          color: AppColor.red),
+                    ],
+                  )),
+            ),
           ],
         ),
       ),

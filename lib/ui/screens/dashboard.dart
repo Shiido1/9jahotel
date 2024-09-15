@@ -29,7 +29,7 @@ class _DashboardState extends State<Dashboard> {
     const FavoriteScreen(),
     BookingScreen(),
     const ReferAndEarn(),
-    const ProfileScreen(),
+     ProfileScreen(),
   ];
 
   Future<bool> willPopControl() async {

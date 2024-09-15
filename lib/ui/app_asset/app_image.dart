@@ -5,6 +5,7 @@ class AppImage {
   static const String hoteldetail = 'assets/image/hotel_detail.png';
   static const String pro = 'assets/image/pro.png';
   static const String map = 'assets/image/mapimage.png';
+  static const String logo = 'assets/image/logo.png';
   static const String map2 = 'assets/image/map.png';
   static const String tabpic = 'assets/image/tab-pic.png';
   static const String home = 'assets/svg/home.svg';

@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ninejahotel/core/core_folder/app/app.router.dart';
+import 'package:ninejahotel/main.dart';
 import 'package:ninejahotel/ui/app_asset/app_color.dart';
 import 'package:ninejahotel/ui/app_asset/app_image.dart';
 import '../../../core/connect_end/model/searched_hotels_response_model/datum.dart';
@@ -379,7 +381,8 @@ class HotelDetail extends StatelessWidget {
                       color: AppColor.white,
                       buttonWidth: double.infinity,
                       buttonBorderColor: AppColor.transparent,
-                      onPressed: () {}),
+                      onPressed: () => navigate.navigateTo(Routes.bookingInfoScreen,arguments: BookingInfoScreenArguments(d: data))
+                      ),
                   SizedBox(
                     height: 40.h,
                   ),

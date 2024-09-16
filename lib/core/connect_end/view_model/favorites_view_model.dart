@@ -42,7 +42,7 @@ class FavoritesViewModel extends BaseViewModel {
       _isLoading = false;
 
       AppUtils.snackbar(context,
-          message: _favoriteResponseModel?.message, error: true);
+          message: _favoriteResponseModel?.message);
     } catch (e) {
       _isLoading = false;
       logger.d(e);

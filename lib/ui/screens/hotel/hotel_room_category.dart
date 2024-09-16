@@ -101,8 +101,8 @@ class HotelRoomCategory extends StatelessWidget {
                           mainAxisSpacing: 13,
                           crossAxisSpacing: 10,
                           children: [
-                            ...model.availableRoomsResponseModel!.data!
-                                .map((o) => contContainer(o:o))
+                            ...model.availableRoomsResponseModel!.data!.map(
+                                (o) => contContainer(o: o, context: context))
                           ],
                         ),
                       ),
@@ -132,10 +132,14 @@ class HotelRoomCategory extends StatelessWidget {
   contContainer({Datum? o, context}) => GestureDetector(
         onTap: () => showModalBottomSheet(
           context: context,
-          isScrollControlled: true, // To make it full-screen
+          isScrollControlled: true,
+          backgroundColor: AppColor.black, // To make it full-screen
           builder: (BuildContext context) {
             return DraggableScrollableSheet(
               expand: false,
+              initialChildSize: .2,
+              minChildSize: 0.12,
+              maxChildSize: .35,
               builder: (context, scrollController) {
                 return SingleChildScrollView(
                   controller: scrollController,
@@ -144,6 +148,8 @@ class HotelRoomCategory extends StatelessWidget {
                     height: MediaQuery.of(context).size.height *
                         0.9, // Nearly full screen
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Text(
                           'Select Room',

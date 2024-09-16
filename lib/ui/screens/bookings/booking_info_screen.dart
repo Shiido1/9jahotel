@@ -133,10 +133,11 @@ class _BookingInfoScreenState extends State<BookingInfoScreen> {
                                   padding: EdgeInsets.fromLTRB(
                                       11.2.w, 9.0.w, 11.2.w, 9.0.w),
                                   decoration: BoxDecoration(
+                                    color: AppColor.darkgrey,
                                     border: Border.all(
                                       color: AppColor.white,
                                     ),
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(2),
                                   ),
                                   child: TextView(
                                     text: checkin,
@@ -168,10 +169,11 @@ class _BookingInfoScreenState extends State<BookingInfoScreen> {
                                   padding: EdgeInsets.fromLTRB(
                                       11.2.w, 9.0.w, 11.2.w, 9.0.w),
                                   decoration: BoxDecoration(
+                                    color: AppColor.darkgrey,
                                     border: Border.all(
                                       color: AppColor.white,
                                     ),
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(2),
                                   ),
                                   child: TextView(
                                     text: checkout,
@@ -294,7 +296,7 @@ class _BookingInfoScreenState extends State<BookingInfoScreen> {
                       onPressed: () => model.availableRooms(
                           id: widget.d?.id.toString(),
                           checkin: checkin,
-                          checkout: checkout)),
+                          checkout: checkout,context: context)),
                   SizedBox(
                     height: 40.h,
                   ),

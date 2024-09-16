@@ -13,6 +13,7 @@ import 'package:ninejahotel/ui/app_asset/app_image.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:stacked/stacked.dart';
 import '../../../core/connect_end/model/searched_hotels_response_model/datum.dart';
+import '../../../core/connect_end/view_model/favorites_view_model.dart';
 import '../../../core/core_folder/app/app.locator.dart';
 import '../../app_asset/app_validation.dart';
 import '../../widget/text_form_widget.dart';
@@ -493,135 +494,144 @@ class _HomeScreenState extends State<HomeScreen> {
         });
   }
 
-  hotelListContainer({context, Datum? d}) => GestureDetector(
-        onTap: () => Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => HotelDetail(data: d))),
-        child: Stack(children: [
-          Container(
-            margin: EdgeInsets.only(bottom: 20.w),
-            height: 240.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: AppColor.primary1,
-                border: Border.all(color: AppColor.black)),
-          ),
-          Image.asset(
-            AppImage.hot,
-            fit: BoxFit.fitWidth,
-            width: double.infinity,
-            height: 128.0.h,
-          ),
-          Positioned(
-            bottom: 30.0,
-            left: 6,
-            right: 10,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 200.w,
-                      child: TextView(
-                        text: d?.name ?? '',
-                        maxLines: 1,
-                        textOverflow: TextOverflow.ellipsis,
-                        fontSize: 21.2.sp,
-                        fontWeight: FontWeight.w700,
-                        color: AppColor.black,
-                      ),
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 2.2.w),
-                          child: Icon(
-                            Icons.location_on_rounded,
-                            size: 17.2.sp,
-                            color: const Color.fromARGB(255, 106, 165, 165),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 6.w,
-                        ),
-                        SizedBox(
-                          width: 168.0.w,
-                          child: TextView(
-                            text: d?.address ?? '',
-                            fontSize: 14.2.sp,
-                            maxLines: 2,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 4.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        if (d!.rating!.toLowerCase() ==
-                            'no rating yet'.toLowerCase())
-                          TextView(
-                            text: 'No Ratings',
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.primary,
-                          )
-                        else
-                          ...List.filled(int.parse(d.rating!), 0)
-                              .map((o) => Icon(
-                                    Icons.star,
-                                    size: 14.sp,
-                                    color: AppColor.primary,
-                                  )),
-                        SizedBox(
-                          width: 20.w,
-                        ),
-                        if (d.reviews!.toLowerCase() ==
-                            'no reviews yet'.toLowerCase())
-                          TextView(
-                            text: 'No Reviews',
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.grey,
-                          )
-                        else
-                          TextView(
-                            text: '${d.reviews} Reviews',
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.grey,
-                          )
-                      ],
-                    )
-                  ],
+  hotelListContainer({context, Datum? d}) =>
+      ViewModelBuilder<FavoritesViewModel>.reactive(
+          viewModelBuilder: () => locator<FavoritesViewModel>(),
+          onViewModelReady: (model) {},
+          disposeViewModel: false,
+          builder: (_, FavoritesViewModel model, __) {
+            return GestureDetector(
+              onDoubleTap: () => model.addFavorite(d.code, context),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => HotelDetail(data: d))),
+              child: Stack(children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 20.w),
+                  height: 240.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: AppColor.primary1,
+                      border: Border.all(color: AppColor.black)),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    TextView(
-                      text: 'N${d.onlinePrice}',
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w700,
-                      color: AppColor.primary,
-                    ),
-                    TextView(
-                      text: '/Per Night',
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColor.grey,
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-        ]),
-      );
+                Image.asset(
+                  AppImage.hot,
+                  fit: BoxFit.fitWidth,
+                  width: double.infinity,
+                  height: 128.0.h,
+                ),
+                Positioned(
+                  bottom: 30.0,
+                  left: 6,
+                  right: 10,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: 200.w,
+                            child: TextView(
+                              text: d?.name ?? '',
+                              maxLines: 1,
+                              textOverflow: TextOverflow.ellipsis,
+                              fontSize: 21.2.sp,
+                              fontWeight: FontWeight.w700,
+                              color: AppColor.black,
+                            ),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(top: 2.2.w),
+                                child: Icon(
+                                  Icons.location_on_rounded,
+                                  size: 17.2.sp,
+                                  color:
+                                      const Color.fromARGB(255, 106, 165, 165),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 6.w,
+                              ),
+                              SizedBox(
+                                width: 168.0.w,
+                                child: TextView(
+                                  text: d?.address ?? '',
+                                  fontSize: 14.2.sp,
+                                  maxLines: 2,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColor.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 4.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              if (d!.rating!.toLowerCase() ==
+                                  'no rating yet'.toLowerCase())
+                                TextView(
+                                  text: 'No Ratings',
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColor.primary,
+                                )
+                              else
+                                ...List.filled(int.parse(d.rating!), 0)
+                                    .map((o) => Icon(
+                                          Icons.star,
+                                          size: 14.sp,
+                                          color: AppColor.primary,
+                                        )),
+                              SizedBox(
+                                width: 20.w,
+                              ),
+                              if (d.reviews!.toLowerCase() ==
+                                  'no reviews yet'.toLowerCase())
+                                TextView(
+                                  text: 'No Reviews',
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColor.grey,
+                                )
+                              else
+                                TextView(
+                                  text: '${d.reviews} Reviews',
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColor.grey,
+                                )
+                            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          TextView(
+                            text: 'N${d.onlinePrice}',
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w700,
+                            color: AppColor.primary,
+                          ),
+                          TextView(
+                            text: '/Per Night',
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColor.grey,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ]),
+            );
+          });
 }

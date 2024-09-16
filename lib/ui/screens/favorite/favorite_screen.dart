@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ninejahotel/core/connect_end/model/get_favorite_response_model/datum.dart';
 import 'package:ninejahotel/core/connect_end/view_model/favorites_view_model.dart';
 import 'package:ninejahotel/ui/app_asset/app_color.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -45,7 +46,7 @@ class FavoriteScreen extends StatelessWidget {
                   if (model.getFavoriteResponseModel != null ||
                       model.favoriteResponseModelList!.isNotEmpty)
                     SizedBox(
-                      height: 500.h,
+                      height: MediaQuery.of(context).size.height * .60,
                       child: SmartRefresher(
                         key: const PageStorageKey('key'),
                         controller: refreshController!,
@@ -66,27 +67,29 @@ class FavoriteScreen extends StatelessWidget {
                               model.getFavoriteResponseModel!.data!.isEmpty) {
                             body = TextView(
                                 text: "You're caught up",
-                                color: AppColor.darkgrey);
+                                color: AppColor.white);
                           } else if (mode == LoadStatus.idle &&
                               model.isLoadNoMore == false) {
                             body = TextView(
                               text: "Pull up load",
-                              color: AppColor.darkgrey,
+                              color: AppColor.white,
                             );
                           } else if (mode == LoadStatus.loading) {
-                            body = const CupertinoActivityIndicator();
+                            body = const CupertinoActivityIndicator(
+                              color: AppColor.white,
+                            );
                           } else if (mode == LoadStatus.failed) {
                             body = TextView(
                                 text: "Load Failed!Click retry!",
-                                color: AppColor.darkgrey);
+                                color: AppColor.white);
                           } else if (mode == LoadStatus.canLoading) {
                             body = TextView(
                                 text: "release to load more",
-                                color: AppColor.darkgrey);
+                                color: AppColor.white);
                           } else {
                             body = TextView(
                                 text: "You're caught up",
-                                color: AppColor.darkgrey);
+                                color: AppColor.white);
                           }
                           return SizedBox(
                             height: 50.0,
@@ -96,21 +99,31 @@ class FavoriteScreen extends StatelessWidget {
                         child: SingleChildScrollView(
                           child: Column(
                             children: [
-                              ...[1, 2, 3, 4, 5].map(
-                                (o) => cardFavorite(),
+                              ...model.favoriteResponseModelList!.map(
+                                (o) => cardFavorite(o: o),
                               ),
+                              SizedBox(
+                                height: 30.h,
+                              )
                             ],
                           ),
                         ),
                       ),
                     )
-                  else if (model.getFavoriteResponseModel == null &&
-                      model.favoriteResponseModelList!.isEmpty)
-                    TextView(
-                      text: "NO HOTEL",
-                      color: AppColor.white,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w600,
+                  else if (model.isLoading)
+                    const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColor.primary,
+                      ),
+                    )
+                  else if (model.favoriteResponseModelList!.isEmpty)
+                    Center(
+                      child: TextView(
+                        text: "NO HOTEL",
+                        color: AppColor.white,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   SizedBox(
                     height: 100.h,
@@ -122,7 +135,7 @@ class FavoriteScreen extends StatelessWidget {
     );
   }
 
-  cardFavorite() => Stack(children: [
+  cardFavorite({Datum? o}) => Stack(children: [
         Container(
           margin: EdgeInsets.only(bottom: 20.w),
           height: 240.h,
@@ -131,8 +144,8 @@ class FavoriteScreen extends StatelessWidget {
               color: AppColor.primary1,
               border: Border.all(color: AppColor.black)),
         ),
-        Image.asset(
-          AppImage.hot,
+        Image.network(
+          o?.image ?? '',
           fit: BoxFit.fitWidth,
           width: double.infinity,
           height: 128.0.h,
@@ -149,7 +162,7 @@ class FavoriteScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextView(
-                    text: 'Fairmont Hotel',
+                    text: o?.name ?? '',
                     fontSize: 21.2.sp,
                     fontWeight: FontWeight.w700,
                     color: AppColor.black,
@@ -171,7 +184,7 @@ class FavoriteScreen extends StatelessWidget {
                       SizedBox(
                         width: 168.0.w,
                         child: TextView(
-                          text: 'Guzape 24231,Abuja F.C.T',
+                          text: o?.address ?? '',
                           fontSize: 14.2.sp,
                           maxLines: 2,
                           fontWeight: FontWeight.w400,
@@ -208,7 +221,7 @@ class FavoriteScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   TextView(
-                    text: 'N199,000',
+                    text: 'N${o?.onlinePrice ?? ''}',
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w700,
                     color: AppColor.primary,

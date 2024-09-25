@@ -1,18 +1,15 @@
 // ignore_for_file: deprecated_member_use, must_be_immutable
 
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:ninejahotel/core/connect_end/view_model/bookings_view_model.dart';
 import 'package:ninejahotel/ui/app_asset/app_color.dart';
-import 'package:ninejahotel/ui/app_asset/app_image.dart';
+import 'package:ninejahotel/ui/app_asset/app_utils.dart';
 import 'package:stacked/stacked.dart';
 import '../../../core/connect_end/model/searched_hotels_response_model/datum.dart';
 import '../../../core/core_folder/app/app.locator.dart';
 import '../../widget/button_widget.dart';
-import '../../widget/text_form_widget.dart';
 import '../../widget/text_widget.dart';
 
 class BookingInfoScreen extends StatefulWidget {
@@ -186,97 +183,97 @@ class _BookingInfoScreenState extends State<BookingInfoScreen> {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: 20.w,
-                        ),
-                        TextFormWidget(
-                          label: 'Guest',
-                          labelStyle: const TextStyle(color: AppColor.white),
-                          // labelColor: AppColor.white,
-                          prefixWidget: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SvgPicture.asset(
-                              AppImage.profile,
-                              color: AppColor.white,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        TextFormWidget(
-                          label: 'ID card type',
-                          labelStyle: const TextStyle(color: AppColor.white),
-                          // labelColor: AppColor.white,
-                          prefixWidget: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SvgPicture.asset(
-                              AppImage.profile,
-                              color: AppColor.white,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        TextFormWidget(
-                          label: 'ID card number',
-                          labelStyle: const TextStyle(color: AppColor.white),
-                          // labelColor: AppColor.white,
-                          prefixWidget: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SvgPicture.asset(
-                              AppImage.profile,
-                              color: AppColor.white,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        DottedBorder(
-                          borderType: BorderType.RRect,
-                          dashPattern: const [10, 10],
-                          color: AppColor.white,
-                          child: Container(
-                            width: double.infinity,
-                            padding: EdgeInsets.all(18.w),
-                            color: AppColor.lightGrey,
-                            child: Column(
-                              children: [
-                                SvgPicture.asset(AppImage.gallery),
-                                RichText(
-                                  textAlign: TextAlign.center,
-                                  text: TextSpan(
-                                    text: 'Upload an you ID cardimage  ',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        color: AppColor.primary,
-                                        fontSize: 15.sp),
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                          text:
-                                              'or drag and drop (8 images max)',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              color: AppColor.black,
-                                              fontSize: 15.sp)),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20.h,
-                                ),
-                                TextView(
-                                  text: 'PNG, JPG, GIF up to 10MB',
-                                  fontSize: 13.6.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColor.grey,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
+                        // SizedBox(
+                        //   height: 20.w,
+                        // ),
+                        // TextFormWidget(
+                        //   label: 'Guest',
+                        //   labelStyle: const TextStyle(color: AppColor.white),
+                        //   // labelColor: AppColor.white,
+                        //   prefixWidget: Padding(
+                        //     padding: const EdgeInsets.all(8.0),
+                        //     child: SvgPicture.asset(
+                        //       AppImage.profile,
+                        //       color: AppColor.white,
+                        //     ),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: 10.h,
+                        // ),
+                        // TextFormWidget(
+                        //   label: 'ID card type',
+                        //   labelStyle: const TextStyle(color: AppColor.white),
+                        //   // labelColor: AppColor.white,
+                        //   prefixWidget: Padding(
+                        //     padding: const EdgeInsets.all(8.0),
+                        //     child: SvgPicture.asset(
+                        //       AppImage.profile,
+                        //       color: AppColor.white,
+                        //     ),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: 10.h,
+                        // ),
+                        // TextFormWidget(
+                        //   label: 'ID card number',
+                        //   labelStyle: const TextStyle(color: AppColor.white),
+                        //   // labelColor: AppColor.white,
+                        //   prefixWidget: Padding(
+                        //     padding: const EdgeInsets.all(8.0),
+                        //     child: SvgPicture.asset(
+                        //       AppImage.profile,
+                        //       color: AppColor.white,
+                        //     ),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: 20.h,
+                        // ),
+                        // DottedBorder(
+                        //   borderType: BorderType.RRect,
+                        //   dashPattern: const [10, 10],
+                        //   color: AppColor.white,
+                        //   child: Container(
+                        //     width: double.infinity,
+                        //     padding: EdgeInsets.all(18.w),
+                        //     color: AppColor.lightGrey,
+                        //     child: Column(
+                        //       children: [
+                        //         SvgPicture.asset(AppImage.gallery),
+                        //         RichText(
+                        //           textAlign: TextAlign.center,
+                        //           text: TextSpan(
+                        //             text: 'Upload an you ID cardimage  ',
+                        //             style: TextStyle(
+                        //                 fontWeight: FontWeight.w500,
+                        //                 color: AppColor.primary,
+                        //                 fontSize: 15.sp),
+                        //             children: <TextSpan>[
+                        //               TextSpan(
+                        //                   text:
+                        //                       'or drag and drop (8 images max)',
+                        //                   style: TextStyle(
+                        //                       fontWeight: FontWeight.w500,
+                        //                       color: AppColor.black,
+                        //                       fontSize: 15.sp)),
+                        //             ],
+                        //           ),
+                        //         ),
+                        //         SizedBox(
+                        //           height: 20.h,
+                        //         ),
+                        //         TextView(
+                        //           text: 'PNG, JPG, GIF up to 10MB',
+                        //           fontSize: 13.6.sp,
+                        //           fontWeight: FontWeight.w400,
+                        //           color: AppColor.grey,
+                        //         )
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
                         SizedBox(
                           height: 30.h,
                         ),
@@ -284,19 +281,28 @@ class _BookingInfoScreenState extends State<BookingInfoScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 40.h,
+                    height: 140.h,
                   ),
                   ButtonWidget(
                       buttonText: 'Check Out',
                       buttonColor: AppColor.primary,
                       color: AppColor.white,
                       isLoading: model.isLoading,
-                      buttonWidth: double.infinity,
+                      buttonWidth: 300.w,
                       buttonBorderColor: AppColor.transparent,
-                      onPressed: () => model.availableRooms(
-                          id: widget.d?.id.toString(),
-                          checkin: checkin,
-                          checkout: checkout,context: context)),
+                      onPressed: () {
+                        if (checkin != 'Check-In' && checkout != 'Check-Out') {
+                          model.availableRooms(
+                              id: widget.d?.id.toString(),
+                              checkin: checkin,
+                              checkout: checkout,
+                              context: context);
+                        } else {
+                          AppUtils.snackbar(context,
+                              message: 'Kindly Check in and Check out',
+                              error: true);
+                        }
+                      }),
                   SizedBox(
                     height: 40.h,
                   ),

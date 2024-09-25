@@ -4,6 +4,7 @@ import '../../../ui/screens/bookings/booking_info_screen.dart';
 import '../../../ui/screens/dashboard.dart';
 import '../../../ui/screens/first_screen.dart';
 import '../../../ui/screens/forgot_password/first_forgot_password_screen.dart';
+import '../../../ui/screens/hotel/tour_room.dart';
 import '../../../ui/screens/login_screen.dart';
 import '../../../ui/screens/reset_password.dart';
 import '../../api_folder/auth_api.dart';
@@ -28,6 +29,7 @@ import '../network/network_service.dart';
   MaterialRoute(page: FirstForgotPasswordScreen, initial: false),
   MaterialRoute(page: ResetPassword, initial: false),
   MaterialRoute(page: BookingInfoScreen, initial: false),
+  MaterialRoute(page: TourRoomScreen, initial: false),
 ], dependencies: [
   LazySingleton(classType: NavigationService),
   LazySingleton(classType: DialogService),

@@ -513,8 +513,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: AppColor.primary1,
                       border: Border.all(color: AppColor.black)),
                 ),
-                Image.asset(
-                  AppImage.hot,
+                Image.network(
+                  errorBuilder: (context, error, stackTrace) {
+                    return Padding(
+                      padding: EdgeInsets.only(top: 42.w),
+                      child: Center(
+                        child: Icon(
+                          Icons.error,
+                          size: 30.sp,
+                          color: AppColor.darkgrey,
+                        ),
+                      ),
+                    );
+                  },
+                  d?.image ?? '',
                   fit: BoxFit.fitWidth,
                   width: double.infinity,
                   height: 128.0.h,

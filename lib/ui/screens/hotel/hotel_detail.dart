@@ -24,6 +24,7 @@ class HotelDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('print......${data?.toJson()}');
     return Scaffold(
       backgroundColor: AppColor.black,
       body: SingleChildScrollView(
@@ -33,10 +34,25 @@ class HotelDetail extends StatelessWidget {
             Stack(
               clipBehavior: Clip.none,
               children: [
-                Image.asset(
-                  AppImage.hoteldetail,
-                  height: 300.h,
-                  width: double.infinity,
+                Container(
+                  color: AppColor.white,
+                  child: Image.network(
+                    errorBuilder: (context, error, stackTrace) {
+                      return Padding(
+                        padding: EdgeInsets.only(top: 42.w),
+                        child: Center(
+                          child: Icon(
+                            Icons.error,
+                            size: 30.sp,
+                            color: AppColor.darkgrey,
+                          ),
+                        ),
+                      );
+                    },
+                    data?.image ?? '',
+                    height: 300.h,
+                    width: double.infinity,
+                  ),
                 ),
                 Positioned(
                   top: 50,
@@ -381,8 +397,9 @@ class HotelDetail extends StatelessWidget {
                       color: AppColor.white,
                       buttonWidth: double.infinity,
                       buttonBorderColor: AppColor.transparent,
-                      onPressed: () => navigate.navigateTo(Routes.bookingInfoScreen,arguments: BookingInfoScreenArguments(d: data))
-                      ),
+                      onPressed: () => navigate.navigateTo(
+                          Routes.bookingInfoScreen,
+                          arguments: BookingInfoScreenArguments(d: data))),
                   SizedBox(
                     height: 40.h,
                   ),

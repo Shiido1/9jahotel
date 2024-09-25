@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ninejahotel/core/core_folder/app/app.router.dart';
+import 'package:ninejahotel/main.dart';
 import 'package:ninejahotel/ui/app_asset/app_color.dart';
 import 'package:stacked/stacked.dart';
 
@@ -15,28 +17,6 @@ import 'hotel_screen.dart';
 class HotelRoomCategory extends StatelessWidget {
   HotelRoomCategory({super.key});
 
-  // List<String> rooms = [
-  //   '24',
-  //   '243',
-  //   '242',
-  //   '245',
-  //   '324',
-  //   '344',
-  //   '454',
-  //   '324',
-  //   '424',
-  //   '444',
-  //   '454',
-  //   '404',
-  //   '414',
-  //   '434',
-  //   '354',
-  //   '464',
-  //   '484',
-  //   '334',
-  //   '430',
-  //   '432',
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -160,9 +140,12 @@ class HotelRoomCategory extends StatelessWidget {
                           color: AppColor.white,
                         ),
                         SizedBox(height: 6.h),
-                        Text(
-                          'Room Tour',
-                          style: TextStyle(fontSize: 18, color: AppColor.white),
+                        GestureDetector(
+                          onTap: () => navigate.navigateTo(Routes.tourRoomScreen),
+                          child: Text(
+                            'Room Tour',
+                            style: TextStyle(fontSize: 18, color: AppColor.white),
+                          ),
                         )
                       ],
                     ),

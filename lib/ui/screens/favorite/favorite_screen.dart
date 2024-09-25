@@ -9,7 +9,6 @@ import 'package:ninejahotel/ui/app_asset/app_color.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:stacked/stacked.dart';
 import '../../../core/core_folder/app/app.locator.dart';
-import '../../app_asset/app_image.dart';
 import '../../widget/text_widget.dart';
 
 class FavoriteScreen extends StatelessWidget {
